@@ -13,7 +13,7 @@ public class TLFormViewController: UIViewController {
     fileprivate lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = .blue
+        collectionView.backgroundColor = .white
         return collectionView
     }()
     
@@ -82,7 +82,11 @@ public class TLFormViewController: UIViewController {
         switch reusableItem {
         case .testing: break
         case .textfield(let setup, var model):
+            
+            guard cellModel is TLTextFieldItemCellModel else { return }
+            
             print(model.inputText)
+            
             model.inputText = "\(model.inputText ?? "1") LUL"
             let newItem = TLFormReusableItem.textfield(setup, model)
             reusableItems[indexPath.section][indexPath.item] = newItem
@@ -91,6 +95,10 @@ public class TLFormViewController: UIViewController {
             collectionView.reloadItems(at: [indexPath])
         case .custom(_): break
         }
+    }
+    
+    public func reloadCollection() {
+        collectionView.reloadData()
     }
     
     private func getReusableItems(items: [[TLFormItem]]) -> [[TLFormReusableItem]] {
@@ -160,7 +168,6 @@ extension TLFormViewController {
         NSLayoutConstraint(item: collectionView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: 0).isActive = true
         NSLayoutConstraint(item: collectionView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0).isActive = true
     }
-    
 }
 
 

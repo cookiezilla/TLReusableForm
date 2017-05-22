@@ -33,6 +33,5 @@ public struct TLSectionSetup {
             }
             return sections
         }
-        
     }
 }

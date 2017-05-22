@@ -51,7 +51,7 @@ class TLFormCollectionViewLayout: UICollectionViewLayout {
                 if let collectionView = collectionView {
                     itemWidth = item.itemBuilder.automaticWidth ? collectionView.frame.width : item.itemBuilder.itemSize.width
                 } else {
-                    itemWidth = item.itemBuilder.automaticWidth ? 0 : item.itemBuilder.itemSize.width
+                    itemWidth = item.itemBuilder.automaticWidth ? 10 : item.itemBuilder.itemSize.width
                 }
                 
                 let height = item.itemBuilder.itemSize.height
@@ -72,7 +72,8 @@ class TLFormCollectionViewLayout: UICollectionViewLayout {
     }
     
     override var collectionViewContentSize: CGSize {
-        return CGSize(width: collectionView!.frame.size.width, height: verticalValue)
+        let width = collectionView?.frame.size.width ?? 10
+        return CGSize(width: width, height: verticalValue)
     }
 
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
