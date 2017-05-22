@@ -27,6 +27,7 @@ class TLTextFieldItemCell: UICollectionViewCell {
         textfield.translatesAutoresizingMaskIntoConstraints = false
         textfield.font = TLFontHelper.inputText
         textfield.textColor = TLColorPalette.textColor
+        textfield.addTarget(self, action: #selector(inputTextDidEdit(sender:)), for: .editingChanged)
         return textfield
     }()
     
@@ -57,6 +58,8 @@ class TLTextFieldItemCell: UICollectionViewCell {
         }
     }
     
+    var didChangeText: ((String?)->())?
+    
     fileprivate(set) var itemSetup: TLTextFieldItemSetup?
     
     override init(frame: CGRect) {
@@ -70,13 +73,18 @@ class TLTextFieldItemCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func inputTextDidEdit(sender: UITextField) {
+        didChangeText?(sender.text)
+    }
  
-    static func createItem(from collectionView: UICollectionView, for indexPath: IndexPath, identifier: String, itemSetup: TLTextFieldItemSetup) -> TLTextFieldItemCell {
+    static func createItem(from collectionView: UICollectionView, for indexPath: IndexPath, identifier: String, itemSetup: TLTextFieldItemSetup, model: TLTextFieldItemCellModel) -> TLTextFieldItemCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! TLTextFieldItemCell
         cell.setup(itemSetup: itemSetup)
-        cell.titleText = itemSetup.titleText
-        cell.placeholderText = itemSetup.placeholder
+        cell.titleText = model.titleText
+        cell.placeholderText = model.placeholder
+        cell.inputText = model.inputText
+        cell.didChangeText = model.didChangeText
         return cell
     }
     

@@ -39,8 +39,8 @@ class TLFormDataSource: NSObject, UICollectionViewDataSource {
         switch item {
         case .testing:
             return createTestingItem(from: collectionView, for: indexPath, identifier: identifier)
-        case .textfield(let setup):
-            return TLTextFieldItemCell.createItem(from: collectionView, for: indexPath, identifier: identifier, itemSetup: setup)
+        case .textfield(let setup, let model):
+            return TLTextFieldItemCell.createItem(from: collectionView, for: indexPath, identifier: identifier, itemSetup: setup, model: model)
         case .custom(_):
             
             if let dataSource = customItemDataSource {

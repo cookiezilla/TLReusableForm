@@ -11,7 +11,7 @@ import Foundation
 public enum TLFormReusableItem {
     
     case testing
-    case textfield(TLTextFieldItemSetup)
+    case textfield(TLTextFieldItemSetup, TLTextFieldItemCellModel)
     case custom(TLFormItemBuilder)
     
     var itemBuilder: TLFormItemBuilder {
