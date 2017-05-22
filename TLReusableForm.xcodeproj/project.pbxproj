@@ -8,12 +8,42 @@
 
 /* Begin PBXBuildFile section */
 		F12EB67A1ED32323005FF15B /* TLReusableForm.h in Headers */ = {isa = PBXBuildFile; fileRef = F12EB6781ED32323005FF15B /* TLReusableForm.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F12EB6821ED3237D005FF15B /* TLFormBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12EB6811ED3237D005FF15B /* TLFormBuilder.swift */; };
+		F12EB6881ED32494005FF15B /* TLFormCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12EB6851ED32494005FF15B /* TLFormCollectionViewLayout.swift */; };
+		F12EB6891ED32494005FF15B /* TLFormDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12EB6861ED32494005FF15B /* TLFormDataSource.swift */; };
+		F12EB68A1ED32494005FF15B /* TLFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12EB6871ED32494005FF15B /* TLFormViewController.swift */; };
+		F12EB68F1ED32627005FF15B /* TLColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12EB68C1ED32627005FF15B /* TLColorPalette.swift */; };
+		F12EB6901ED32627005FF15B /* TLFontHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12EB68D1ED32627005FF15B /* TLFontHelper.swift */; };
+		F12EB6911ED32627005FF15B /* TLSectionSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12EB68E1ED32627005FF15B /* TLSectionSetup.swift */; };
+		F12EB6981ED326ED005FF15B /* TLTestingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12EB6961ED326ED005FF15B /* TLTestingItem.swift */; };
+		F12EB69D1ED32C56005FF15B /* TLFormReusableItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12EB69C1ED32C56005FF15B /* TLFormReusableItems.swift */; };
+		F12EB6A01ED32C6A005FF15B /* TLTextFieldItemBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12EB69E1ED32C6A005FF15B /* TLTextFieldItemBuilder.swift */; };
+		F12EB6A11ED32C6A005FF15B /* TLTextFieldItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12EB69F1ED32C6A005FF15B /* TLTextFieldItemCell.swift */; };
+		F12EB6A41ED32D40005FF15B /* TLTextFieldItemSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12EB6A31ED32D40005FF15B /* TLTextFieldItemSetup.swift */; };
+		F12EB6A61ED32D66005FF15B /* TLItemSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12EB6A51ED32D66005FF15B /* TLItemSetup.swift */; };
+		F12EB6A81ED32D8B005FF15B /* TLItemBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12EB6A71ED32D8B005FF15B /* TLItemBuilder.swift */; };
+		F12EB6AA1ED32FA4005FF15B /* TLFormItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12EB6A91ED32FA4005FF15B /* TLFormItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F12EB6751ED32323005FF15B /* TLReusableForm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TLReusableForm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F12EB6781ED32323005FF15B /* TLReusableForm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLReusableForm.h; sourceTree = "<group>"; };
 		F12EB6791ED32323005FF15B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F12EB6811ED3237D005FF15B /* TLFormBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLFormBuilder.swift; sourceTree = "<group>"; };
+		F12EB6851ED32494005FF15B /* TLFormCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLFormCollectionViewLayout.swift; sourceTree = "<group>"; };
+		F12EB6861ED32494005FF15B /* TLFormDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLFormDataSource.swift; sourceTree = "<group>"; };
+		F12EB6871ED32494005FF15B /* TLFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLFormViewController.swift; sourceTree = "<group>"; };
+		F12EB68C1ED32627005FF15B /* TLColorPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLColorPalette.swift; sourceTree = "<group>"; };
+		F12EB68D1ED32627005FF15B /* TLFontHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLFontHelper.swift; sourceTree = "<group>"; };
+		F12EB68E1ED32627005FF15B /* TLSectionSetup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLSectionSetup.swift; sourceTree = "<group>"; };
+		F12EB6961ED326ED005FF15B /* TLTestingItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLTestingItem.swift; sourceTree = "<group>"; };
+		F12EB69C1ED32C56005FF15B /* TLFormReusableItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLFormReusableItems.swift; sourceTree = "<group>"; };
+		F12EB69E1ED32C6A005FF15B /* TLTextFieldItemBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLTextFieldItemBuilder.swift; sourceTree = "<group>"; };
+		F12EB69F1ED32C6A005FF15B /* TLTextFieldItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLTextFieldItemCell.swift; sourceTree = "<group>"; };
+		F12EB6A31ED32D40005FF15B /* TLTextFieldItemSetup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLTextFieldItemSetup.swift; sourceTree = "<group>"; };
+		F12EB6A51ED32D66005FF15B /* TLItemSetup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLItemSetup.swift; sourceTree = "<group>"; };
+		F12EB6A71ED32D8B005FF15B /* TLItemBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLItemBuilder.swift; sourceTree = "<group>"; };
+		F12EB6A91ED32FA4005FF15B /* TLFormItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLFormItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,10 +76,81 @@
 		F12EB6771ED32323005FF15B /* TLReusableForm */ = {
 			isa = PBXGroup;
 			children = (
+				F12EB68B1ED32627005FF15B /* Setup */,
+				F12EB6941ED326BD005FF15B /* Items */,
+				F12EB6831ED32494005FF15B /* Form */,
+				F12EB6801ED32375005FF15B /* Protocol */,
 				F12EB6781ED32323005FF15B /* TLReusableForm.h */,
 				F12EB6791ED32323005FF15B /* Info.plist */,
 			);
 			path = TLReusableForm;
+			sourceTree = "<group>";
+		};
+		F12EB6801ED32375005FF15B /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				F12EB6A21ED32D40005FF15B /* Item */,
+				F12EB6A71ED32D8B005FF15B /* TLItemBuilder.swift */,
+				F12EB6A51ED32D66005FF15B /* TLItemSetup.swift */,
+				F12EB6811ED3237D005FF15B /* TLFormBuilder.swift */,
+				F12EB6A91ED32FA4005FF15B /* TLFormItem.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		F12EB6831ED32494005FF15B /* Form */ = {
+			isa = PBXGroup;
+			children = (
+				F12EB6841ED32494005FF15B /* Layout */,
+				F12EB6861ED32494005FF15B /* TLFormDataSource.swift */,
+				F12EB6871ED32494005FF15B /* TLFormViewController.swift */,
+			);
+			path = Form;
+			sourceTree = "<group>";
+		};
+		F12EB6841ED32494005FF15B /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				F12EB6851ED32494005FF15B /* TLFormCollectionViewLayout.swift */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
+		F12EB68B1ED32627005FF15B /* Setup */ = {
+			isa = PBXGroup;
+			children = (
+				F12EB68C1ED32627005FF15B /* TLColorPalette.swift */,
+				F12EB68D1ED32627005FF15B /* TLFontHelper.swift */,
+				F12EB68E1ED32627005FF15B /* TLSectionSetup.swift */,
+			);
+			path = Setup;
+			sourceTree = "<group>";
+		};
+		F12EB6941ED326BD005FF15B /* Items */ = {
+			isa = PBXGroup;
+			children = (
+				F12EB69B1ED32C05005FF15B /* TextFieldItem */,
+				F12EB6961ED326ED005FF15B /* TLTestingItem.swift */,
+				F12EB69C1ED32C56005FF15B /* TLFormReusableItems.swift */,
+			);
+			path = Items;
+			sourceTree = "<group>";
+		};
+		F12EB69B1ED32C05005FF15B /* TextFieldItem */ = {
+			isa = PBXGroup;
+			children = (
+				F12EB69E1ED32C6A005FF15B /* TLTextFieldItemBuilder.swift */,
+				F12EB69F1ED32C6A005FF15B /* TLTextFieldItemCell.swift */,
+			);
+			path = TextFieldItem;
+			sourceTree = "<group>";
+		};
+		F12EB6A21ED32D40005FF15B /* Item */ = {
+			isa = PBXGroup;
+			children = (
+				F12EB6A31ED32D40005FF15B /* TLTextFieldItemSetup.swift */,
+			);
+			path = Item;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -96,6 +197,7 @@
 					F12EB6741ED32323005FF15B = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = KL955RL3SL;
+						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -132,6 +234,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F12EB6A11ED32C6A005FF15B /* TLTextFieldItemCell.swift in Sources */,
+				F12EB6901ED32627005FF15B /* TLFontHelper.swift in Sources */,
+				F12EB6A41ED32D40005FF15B /* TLTextFieldItemSetup.swift in Sources */,
+				F12EB68A1ED32494005FF15B /* TLFormViewController.swift in Sources */,
+				F12EB6A01ED32C6A005FF15B /* TLTextFieldItemBuilder.swift in Sources */,
+				F12EB6AA1ED32FA4005FF15B /* TLFormItem.swift in Sources */,
+				F12EB6911ED32627005FF15B /* TLSectionSetup.swift in Sources */,
+				F12EB6A81ED32D8B005FF15B /* TLItemBuilder.swift in Sources */,
+				F12EB69D1ED32C56005FF15B /* TLFormReusableItems.swift in Sources */,
+				F12EB6881ED32494005FF15B /* TLFormCollectionViewLayout.swift in Sources */,
+				F12EB6891ED32494005FF15B /* TLFormDataSource.swift in Sources */,
+				F12EB6A61ED32D66005FF15B /* TLItemSetup.swift in Sources */,
+				F12EB68F1ED32627005FF15B /* TLColorPalette.swift in Sources */,
+				F12EB6821ED3237D005FF15B /* TLFormBuilder.swift in Sources */,
+				F12EB6981ED326ED005FF15B /* TLTestingItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,7 +296,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -226,7 +343,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -240,6 +357,7 @@
 		F12EB67E1ED32323005FF15B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = KL955RL3SL;
@@ -252,6 +370,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tektonlabs.TLReusableForm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -259,6 +378,7 @@
 		F12EB67F1ED32323005FF15B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = KL955RL3SL;
