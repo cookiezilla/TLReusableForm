@@ -39,7 +39,13 @@ class TLFormDataSource: NSObject, UICollectionViewDataSource {
         switch item {
         case .testing:
             return createTestingItem(from: collectionView, for: indexPath, identifier: identifier)
-        case .textfield(let setup, let model):
+        case .textfield(let setup, var model):
+
+            model.didChangeText = { [weak self]text in
+                let model = TLTextFieldItemCellModel(inputText: text)
+                self?.itemList[indexPath.section][indexPath.item] = TLFormReusableItem.textfield(setup, model)
+            }
+            
             return TLTextFieldItemCell.createItem(from: collectionView, for: indexPath, identifier: identifier, itemSetup: setup, model: model)
         case .custom(_):
             
@@ -58,6 +64,16 @@ class TLFormDataSource: NSObject, UICollectionViewDataSource {
     
     func update(item: TLFormReusableItem, at indexPath: IndexPath) {
         itemList[indexPath.section][indexPath.item] = item
+    }
+    
+    func printFor(indexPath: IndexPath) {
+        let item = itemList[indexPath.section][indexPath.item]
+        switch item {
+        case .testing: break
+        case .custom(_): break
+        case .textfield(let setup, let model):
+            print(model.inputText)
+        }
     }
     
 }

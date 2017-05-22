@@ -75,6 +75,10 @@ public class TLFormViewController: UIViewController {
         setupCollectionView()
     }
     
+    public func get(for indexPath: IndexPath) {
+        dataSource.printFor(indexPath: indexPath)
+    }
+    
     public func reloadCell<T>(with cellModel: T, at indexPath: IndexPath) {
         
         let reusableItem = reusableItems[indexPath.section][indexPath.item]

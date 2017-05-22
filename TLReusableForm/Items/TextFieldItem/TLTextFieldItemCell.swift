@@ -31,6 +31,8 @@ class TLTextFieldItemCell: UICollectionViewCell {
         return textfield
     }()
     
+    var cellModel: TLTextFieldItemCellModel
+    
     var titleText: String? {
         get {
             return titleLabel.text
@@ -58,11 +60,10 @@ class TLTextFieldItemCell: UICollectionViewCell {
         }
     }
     
-    weak var delegate: TLTextFieldItemCellDelegate?
-    
     fileprivate(set) var itemSetup: TLTextFieldItemSetup?
     
     override init(frame: CGRect) {
+        cellModel = TLTextFieldItemCellModel(inputText: nil)
         super.init(frame: frame)
         setupTitleLabel()
         setupInputTextField()
@@ -74,17 +75,17 @@ class TLTextFieldItemCell: UICollectionViewCell {
     }
     
     func inputTextDidEdit(sender: UITextField) {
-        delegate?.tlTextFieldItemCellDidChangeText(text: sender.text)
+        cellModel.inputText = sender.text
     }
  
     static func createItem(from collectionView: UICollectionView, for indexPath: IndexPath, identifier: String, itemSetup: TLTextFieldItemSetup, model: TLTextFieldItemCellModel) -> TLTextFieldItemCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! TLTextFieldItemCell
         cell.setup(itemSetup: itemSetup)
-        cell.titleText = model.titleText
-        cell.placeholderText = model.placeholder
+        cell.titleText = itemSetup.titleText
+        cell.placeholderText = itemSetup.placeholderText
         cell.inputText = model.inputText
-        cell.delegate = model.delegate
+        cell.cellModel.didChangeText = model.didChangeText
         return cell
     }
     

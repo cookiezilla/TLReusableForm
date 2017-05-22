@@ -8,17 +8,17 @@
 
 import Foundation
 
-public struct TLTextFieldItemCellModel {
+public class TLTextFieldItemCellModel {
     
-    public init(title: String?, placeholder: String?, inputText: String?) {
-        self.titleText = title
-        self.placeholder = placeholder
+    public init(inputText: String?) {
         self.inputText = inputText
     }
     
-    var titleText: String?
-    var placeholder: String?
-    public var inputText: String?
-    
-    public weak var delegate: TLTextFieldItemCellDelegate?
+    public var inputText: String? {
+        didSet {
+            didChangeText?(inputText)
+        }
+    }
+
+    var didChangeText: ((String?) -> ())?
 }

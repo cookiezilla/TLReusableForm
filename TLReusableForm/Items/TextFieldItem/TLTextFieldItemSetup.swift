@@ -15,4 +15,7 @@ public protocol TLTextFieldItemSetup: TLItemSetup {
     
     var inputFont: UIFont? { get }
     var inputColor: UIColor? { get }
+    
+    var titleText: String? { get }
+    var placeholderText: String? { get }
 }
