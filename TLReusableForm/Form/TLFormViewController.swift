@@ -17,12 +17,24 @@ public class TLFormViewController: UIViewController {
         return collectionView
     }()
     
-    private var collectionLayout: TLFormCollectionViewLayout
-    private var dataSource: TLFormDataSource
+    fileprivate var collectionLayout: TLFormCollectionViewLayout
+    fileprivate var dataSource: TLFormDataSource
     
-    private var formBuilder: TLFormBuilder
-    private var reusableItems: [[TLFormReusableItem]]
-    private var items: [[TLFormItem]]
+    fileprivate var formBuilder: TLFormBuilder
+    fileprivate var reusableItems: [[TLFormReusableItem]]
+    fileprivate var items: [[TLFormItem]]
+    
+    public weak var collectionViewDelegate: UICollectionViewDelegate? {
+        didSet {
+            collectionView.delegate = collectionViewDelegate
+        }
+    }
+    
+    public weak var customItemDataSource: TLFormCustomItemDataSource? {
+        didSet {
+            dataSource.customItemDataSource = customItemDataSource
+        }
+    }
     
     public init(formBuilder: TLFormBuilder) {
         
@@ -63,15 +75,21 @@ public class TLFormViewController: UIViewController {
         setupCollectionView()
     }
     
-    public weak var collectionViewDelegate: UICollectionViewDelegate? {
-        didSet {
-            collectionView.delegate = collectionViewDelegate
-        }
-    }
-    
-    public weak var customItemDataSource: TLFormCustomItemDataSource? {
-        didSet {
-            dataSource.customItemDataSource = customItemDataSource
+    public func reloadCell<T>(with cellModel: T, at indexPath: IndexPath) {
+        
+        let reusableItem = reusableItems[indexPath.section][indexPath.item]
+        
+        switch reusableItem {
+        case .testing: break
+        case .textfield(let setup, var model):
+            print(model.inputText)
+            model.inputText = "\(model.inputText ?? "1") LUL"
+            let newItem = TLFormReusableItem.textfield(setup, model)
+            reusableItems[indexPath.section][indexPath.item] = newItem
+            print(model.inputText)
+            dataSource.update(item: newItem, at: indexPath)
+            collectionView.reloadItems(at: [indexPath])
+        case .custom(_): break
         }
     }
     
@@ -97,16 +115,6 @@ public class TLFormViewController: UIViewController {
         
         collectionView.register(testingItemBuilder.cellClass, forCellWithReuseIdentifier: testingItemBuilder.itemIdentifier)
         collectionView.register(textfieldItemBuilder.cellClass, forCellWithReuseIdentifier: textfieldItemBuilder.itemIdentifier)
-    }
-    
-    private func setupCollectionView() {
-        
-        view.addSubview(collectionView)
-        
-        NSLayoutConstraint(item: collectionView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: 0).isActive = true
-        NSLayoutConstraint(item: collectionView, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 0).isActive = true
-        NSLayoutConstraint(item: collectionView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: 0).isActive = true
-        NSLayoutConstraint(item: collectionView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0).isActive = true
     }
 
     private func registerCustomItems(itemList: [[TLFormReusableItem]]) {
@@ -139,6 +147,20 @@ public class TLFormViewController: UIViewController {
         
     }
 
+}
+
+extension TLFormViewController {
+    
+    fileprivate func setupCollectionView() {
+        
+        view.addSubview(collectionView)
+        
+        NSLayoutConstraint(item: collectionView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item: collectionView, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item: collectionView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item: collectionView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0).isActive = true
+    }
+    
 }
 
 

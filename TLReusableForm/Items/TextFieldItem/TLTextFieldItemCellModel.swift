@@ -18,7 +18,7 @@ public struct TLTextFieldItemCellModel {
     
     var titleText: String?
     var placeholder: String?
-    var inputText: String?
+    public var inputText: String?
     
-    public var didChangeText: ((String?) -> ())?
+    public weak var delegate: TLTextFieldItemCellDelegate?
 }

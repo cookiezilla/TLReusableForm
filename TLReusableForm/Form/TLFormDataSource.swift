@@ -54,7 +54,10 @@ class TLFormDataSource: NSObject, UICollectionViewDataSource {
                 return createErrorItem(from: collectionView, for: indexPath, identifier: builder.itemIdentifier, withMessage: "Couldn't create the item, no custom dataSource detected")
             }
         }
-        
+    }
+    
+    func update(item: TLFormReusableItem, at indexPath: IndexPath) {
+        itemList[indexPath.section][indexPath.item] = item
     }
     
 }

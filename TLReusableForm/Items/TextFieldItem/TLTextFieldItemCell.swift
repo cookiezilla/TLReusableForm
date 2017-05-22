@@ -58,7 +58,7 @@ class TLTextFieldItemCell: UICollectionViewCell {
         }
     }
     
-    var didChangeText: ((String?)->())?
+    weak var delegate: TLTextFieldItemCellDelegate?
     
     fileprivate(set) var itemSetup: TLTextFieldItemSetup?
     
@@ -74,7 +74,7 @@ class TLTextFieldItemCell: UICollectionViewCell {
     }
     
     func inputTextDidEdit(sender: UITextField) {
-        didChangeText?(sender.text)
+        delegate?.tlTextFieldItemCellDidChangeText(text: sender.text)
     }
  
     static func createItem(from collectionView: UICollectionView, for indexPath: IndexPath, identifier: String, itemSetup: TLTextFieldItemSetup, model: TLTextFieldItemCellModel) -> TLTextFieldItemCell {
@@ -84,7 +84,7 @@ class TLTextFieldItemCell: UICollectionViewCell {
         cell.titleText = model.titleText
         cell.placeholderText = model.placeholder
         cell.inputText = model.inputText
-        cell.didChangeText = model.didChangeText
+        cell.delegate = model.delegate
         return cell
     }
     
