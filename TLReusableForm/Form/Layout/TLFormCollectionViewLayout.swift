@@ -10,12 +10,12 @@ import UIKit
 
 class TLFormCollectionViewLayout: UICollectionViewLayout {
     
-    var itemList: [[TLFormReusableItems]]
+    var itemList: [[TLFormReusableItem]]
     var sectionConfiguration: TLSectionSetup
     
     var verticalValue: CGFloat = 0
     
-    init(itemList: [[TLFormReusableItems]], sectionConfiguration: TLSectionSetup) {
+    init(itemList: [[TLFormReusableItem]], sectionConfiguration: TLSectionSetup) {
         self.itemList = itemList
         self.sectionConfiguration = sectionConfiguration
         super.init()

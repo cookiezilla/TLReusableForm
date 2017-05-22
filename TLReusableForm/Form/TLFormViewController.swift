@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class TLSimpleFormViewController: UIViewController {
+public class TLFormViewController: UIViewController {
 
     fileprivate lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
@@ -21,14 +21,22 @@ public class TLSimpleFormViewController: UIViewController {
     private var dataSource: TLFormDataSource
     
     private var formBuilder: TLFormBuilder
-    private var reusableItems: [[TLFormReusableItems]]
+    private var reusableItems: [[TLFormReusableItem]]
     private var items: [[TLFormItem]]
     
     public init(formBuilder: TLFormBuilder) {
         
         self.formBuilder = formBuilder
         self.items = formBuilder.itemList
-        self.reusableItems = formBuilder.reusableItemList
+        
+        self.reusableItems = [[TLFormReusableItem]]()
+        
+        for item in items {
+            let reusableList = item.map { item -> TLFormReusableItem in
+                return item.item
+            }
+            reusableItems.append(reusableList)
+        }
         
         if let setup = formBuilder.formSetup {
             collectionLayout = TLFormCollectionViewLayout(itemList: reusableItems, sectionConfiguration: setup)
@@ -39,7 +47,7 @@ public class TLSimpleFormViewController: UIViewController {
         dataSource = TLFormDataSource(itemList: reusableItems)
         
         super.init(nibName: nil, bundle: nil)
-        
+    
         setupDefaultItems()
         registerCustomItems(itemList: reusableItems)
         collectionView.collectionViewLayout = collectionLayout
@@ -67,6 +75,21 @@ public class TLSimpleFormViewController: UIViewController {
         }
     }
     
+    private func getReusableItems(items: [[TLFormItem]]) -> [[TLFormReusableItem]] {
+        
+        var reusableItems = [[TLFormReusableItem]]()
+        
+        for item in items {
+            
+            let reusableList = item.map({ item -> TLFormReusableItem in
+                return item.item
+            })
+            
+            reusableItems.append(reusableList)
+        }
+        return reusableItems
+    }
+    
     private func setupDefaultItems() {
         
         let testingItemBuilder = TLTestingItemBuilder()
@@ -86,7 +109,7 @@ public class TLSimpleFormViewController: UIViewController {
         NSLayoutConstraint(item: collectionView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0).isActive = true
     }
 
-    private func registerCustomItems(itemList: [[TLFormReusableItems]]) {
+    private func registerCustomItems(itemList: [[TLFormReusableItem]]) {
         
         var registeredIdentifiers = [String]()
         

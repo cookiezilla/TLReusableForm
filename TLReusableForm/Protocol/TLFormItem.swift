@@ -10,6 +10,6 @@ import Foundation
 
 public protocol TLFormItem {
     
-    var item: TLFormReusableItems { get }
+    var item: TLFormReusableItem { get }
     
 }

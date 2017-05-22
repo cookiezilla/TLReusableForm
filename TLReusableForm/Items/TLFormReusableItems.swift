@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum TLFormReusableItems {
+public enum TLFormReusableItem {
     
     case testing
     case textfield(TLTextFieldItemSetup)

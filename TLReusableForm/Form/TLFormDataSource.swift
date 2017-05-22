@@ -14,9 +14,9 @@ public protocol TLFormCustomItemDataSource: class {
 
 class TLFormDataSource: NSObject, UICollectionViewDataSource {
 
-    var itemList: [[TLFormReusableItems]]
+    var itemList: [[TLFormReusableItem]]
     
-    init(itemList: [[TLFormReusableItems]]) {
+    init(itemList: [[TLFormReusableItem]]) {
         self.itemList = itemList
         super.init()
     }
@@ -40,7 +40,7 @@ class TLFormDataSource: NSObject, UICollectionViewDataSource {
         case .testing:
             return createTestingItem(from: collectionView, for: indexPath, identifier: identifier)
         case .textfield(let setup):
-            return TLTextFieldItem.createItem(from: collectionView, for: indexPath, identifier: identifier, itemSetup: setup)
+            return TLTextFieldItemCell.createItem(from: collectionView, for: indexPath, identifier: identifier, itemSetup: setup)
         case .custom(_):
             
             if let dataSource = customItemDataSource {
@@ -50,7 +50,8 @@ class TLFormDataSource: NSObject, UICollectionViewDataSource {
                 return newItem
                 
             } else {
-                return createErrorItem(from: collectionView, for: indexPath, identifier: identifier, withMessage: "Couldn't create the item")
+                let builder = TLTestingItemBuilder()
+                return createErrorItem(from: collectionView, for: indexPath, identifier: builder.itemIdentifier, withMessage: "Couldn't create the item, no custom dataSource detected")
             }
         }
         

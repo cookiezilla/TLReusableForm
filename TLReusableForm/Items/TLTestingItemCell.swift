@@ -14,8 +14,9 @@ class TLTestingItemCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.font = UIFont.systemFont(ofSize: 13)
         label.text = "The cell couldn't be loaded"
+        label.numberOfLines = 0
         return label
     }()
     
@@ -42,6 +43,18 @@ class TLTestingItemCell: UICollectionViewCell {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        
+        let path = UIBezierPath()
+        path.move(to: CGPoint(x: 15, y: rect.height))
+        path.addLine(to: CGPoint(x: rect.width, y: rect.height))
+        path.lineWidth = 0.5
+        UIColor.white.setStroke()
+        path.stroke()
+        path.close()
     }
     
 }

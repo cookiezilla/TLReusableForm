@@ -12,5 +12,4 @@ public protocol TLFormBuilder {
     
     var itemList: [[TLFormItem]] { get set }
     var formSetup: TLSectionSetup? { get }
-    var reusableItemList: [[TLFormReusableItems]] { get }
 }

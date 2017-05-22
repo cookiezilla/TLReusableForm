@@ -10,7 +10,7 @@ import Foundation
 
 internal struct TLColorPalette {
     
-    static let titleColor = UIColor(red: 160/255, green: 160/255, blue: 160/255, alpha: 1)
+    static let titleColor = UIColor(red: 100/255, green: 100/255, blue: 100/255, alpha: 1)
     static let textColor = UIColor(red: 45/255, green: 45/255, blue: 45/255, alpha: 1)
     static let placeholderColor = UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 1)
     

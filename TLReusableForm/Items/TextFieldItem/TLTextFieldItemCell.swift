@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TLTextFieldItem: UICollectionViewCell {
+class TLTextFieldItemCell: UICollectionViewCell {
     
     fileprivate let leadingSpacing: CGFloat = 15
     
@@ -71,9 +71,9 @@ class TLTextFieldItem: UICollectionViewCell {
     }
     
  
-    static func createItem(from collectionView: UICollectionView, for indexPath: IndexPath, identifier: String, itemSetup: TLTextFieldItemSetup) -> TLTextFieldItem {
+    static func createItem(from collectionView: UICollectionView, for indexPath: IndexPath, identifier: String, itemSetup: TLTextFieldItemSetup) -> TLTextFieldItemCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! TLTextFieldItem
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! TLTextFieldItemCell
         cell.setup(itemSetup: itemSetup)
         cell.titleText = itemSetup.titleText
         cell.placeholderText = itemSetup.placeholder
@@ -102,7 +102,7 @@ class TLTextFieldItem: UICollectionViewCell {
     
 }
 
-extension TLTextFieldItem {
+extension TLTextFieldItemCell {
     
     internal func setup(itemSetup: TLTextFieldItemSetup) {
         

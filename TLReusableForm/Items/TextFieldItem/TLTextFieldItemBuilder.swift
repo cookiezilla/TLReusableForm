@@ -11,7 +11,7 @@ import Foundation
 struct TLTextFieldItemBuilder: TLFormItemBuilder {
     
     var cellClass: AnyClass? {
-        return TLTextFieldItem.self
+        return TLTextFieldItemCell.self
     }
     
     var nib: UINib? {

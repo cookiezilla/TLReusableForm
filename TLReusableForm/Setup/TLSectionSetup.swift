@@ -20,7 +20,7 @@ public struct TLSectionSetup {
     
     var sectionsInset: [UIEdgeInsets]
     
-    func getInsets(for itemList: [[TLFormReusableItems]]) -> [UIEdgeInsets] {
+    func getInsets(for itemList: [[TLFormReusableItem]]) -> [UIEdgeInsets] {
         
         if itemList.count == sectionsInset.count {
             return sectionsInset
