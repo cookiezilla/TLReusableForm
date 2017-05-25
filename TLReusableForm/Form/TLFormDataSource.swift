@@ -14,38 +14,34 @@ public protocol TLFormCustomItemDataSource: class {
 
 class TLFormDataSource: NSObject, UICollectionViewDataSource {
 
-    var itemList: [[TLFormReusableItem]]
+    var reusableItems: [[TLFormReusableItem]]
     
-    init(itemList: [[TLFormReusableItem]]) {
-        self.itemList = itemList
+    init(items: [[TLFormReusableItem]]) {
+        self.reusableItems = items
         super.init()
     }
     
     weak var customItemDataSource: TLFormCustomItemDataSource?
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return itemList.count
+        return reusableItems.count
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return itemList[section].count
+        return reusableItems[section].count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let item = itemList[indexPath.section][indexPath.item]
+        print("dequeue for indexPath: \(indexPath.section) \(indexPath.item)")
+        
+        let item = reusableItems[indexPath.section][indexPath.item]
         let identifier = item.itemBuilder.itemIdentifier
         
         switch item {
         case .testing:
             return createTestingItem(from: collectionView, for: indexPath, identifier: identifier)
         case .textfield(let setup, var model):
-
-            model.didChangeText = { [weak self]text in
-                let model = TLTextFieldItemCellModel(inputText: text)
-                self?.itemList[indexPath.section][indexPath.item] = TLFormReusableItem.textfield(setup, model)
-            }
-            
             return TLTextFieldItemCell.createItem(from: collectionView, for: indexPath, identifier: identifier, itemSetup: setup, model: model)
         case .custom(_):
             
@@ -63,17 +59,15 @@ class TLFormDataSource: NSObject, UICollectionViewDataSource {
     }
     
     func update(item: TLFormReusableItem, at indexPath: IndexPath) {
-        itemList[indexPath.section][indexPath.item] = item
+        reusableItems[indexPath.section][indexPath.item] = item
     }
     
-    func printFor(indexPath: IndexPath) {
-        let item = itemList[indexPath.section][indexPath.item]
-        switch item {
-        case .testing: break
-        case .custom(_): break
-        case .textfield(let setup, let model):
-            print(model.inputText)
-        }
+    func getItem(at indexPath: IndexPath) -> TLFormReusableItem {
+        return reusableItems[indexPath.section][indexPath.item]
+    }
+    
+    func getAllItems() -> [[TLFormReusableItem]] {
+        return reusableItems
     }
     
 }

@@ -85,7 +85,7 @@ class TLTextFieldItemCell: UICollectionViewCell {
         cell.titleText = itemSetup.titleText
         cell.placeholderText = itemSetup.placeholderText
         cell.inputText = model.inputText
-        cell.cellModel.didChangeText = model.didChangeText
+        cell.cellModel = model
         return cell
     }
     
@@ -134,6 +134,9 @@ extension TLTextFieldItemCell {
         if let inputFont = itemSetup.inputFont {
             inputTextField.font = inputFont
         }
+        
+        inputTextField.keyboardType = itemSetup.inputKeyboardType
+        inputTextField.isSecureTextEntry = itemSetup.isInputSecure
     }
     
     fileprivate func setupTitleLabel() {

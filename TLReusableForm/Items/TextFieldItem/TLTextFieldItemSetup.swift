@@ -18,4 +18,7 @@ public protocol TLTextFieldItemSetup: TLItemSetup {
     
     var titleText: String? { get }
     var placeholderText: String? { get }
+    
+    var isInputSecure: Bool { get }
+    var inputKeyboardType: UIKeyboardType { get }
 }

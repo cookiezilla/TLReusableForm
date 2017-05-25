@@ -10,14 +10,14 @@ import UIKit
 
 class TLFormCollectionViewLayout: UICollectionViewLayout {
     
-    var itemList: [[TLFormReusableItem]]
-    var sectionConfiguration: TLSectionSetup
+    var itemBuilders: [[TLFormItemBuilder]]
+    var sectionSetup: TLFormSectionSetup
     
     var verticalValue: CGFloat = 0
     
-    init(itemList: [[TLFormReusableItem]], sectionConfiguration: TLSectionSetup) {
-        self.itemList = itemList
-        self.sectionConfiguration = sectionConfiguration
+    init(itemBuilders: [[TLFormItemBuilder]], sectionSetup: TLFormSectionSetup) {
+        self.itemBuilders = itemBuilders
+        self.sectionSetup = sectionSetup
         super.init()
     }
     
@@ -31,9 +31,9 @@ class TLFormCollectionViewLayout: UICollectionViewLayout {
         
         verticalValue = 0
         
-        let sections = sectionConfiguration.getInsets(for: itemList)
+        let sections = sectionSetup.getInsets(for: itemBuilders)
         
-        for (sectionIndex, sectionItems) in itemList.enumerated() {
+        for (sectionIndex, sectionItemsBuilders) in itemBuilders.enumerated() {
             
             let sectionInset = sections[sectionIndex]
             
@@ -41,29 +41,29 @@ class TLFormCollectionViewLayout: UICollectionViewLayout {
             
             var cachedSectionAttributes = [UICollectionViewLayoutAttributes]()
             
-            for (itemIndex, item) in sectionItems.enumerated() {
+            for (itemIndex, itemBuilder) in sectionItemsBuilders.enumerated() {
                 
-                verticalValue += item.itemBuilder.itemInset.top
+                verticalValue += itemBuilder.itemInset.top
                 
                 let indexPath = IndexPath(item: itemIndex, section: sectionIndex)
                 let itemWidth: CGFloat
                 
                 if let collectionView = collectionView {
-                    itemWidth = item.itemBuilder.automaticWidth ? collectionView.frame.width : item.itemBuilder.itemSize.width
+                    itemWidth = itemBuilder.automaticWidth ? collectionView.frame.width : itemBuilder.itemSize.width
                 } else {
-                    itemWidth = item.itemBuilder.automaticWidth ? 10 : item.itemBuilder.itemSize.width
+                    itemWidth = itemBuilder.automaticWidth ? 10 : itemBuilder.itemSize.width
                 }
                 
-                let height = item.itemBuilder.itemSize.height
-                let width = itemWidth - item.itemBuilder.itemInset.right - sectionInset.right - item.itemBuilder.itemInset.left - sectionInset.left
-                let originX = sectionInset.left + item.itemBuilder.itemInset.left
+                let height = itemBuilder.itemSize.height
+                let width = itemWidth - itemBuilder.itemInset.right - sectionInset.right - itemBuilder.itemInset.left - sectionInset.left
+                let originX = sectionInset.left + itemBuilder.itemInset.left
                 let originY = verticalValue
                 
                 let attribute = UICollectionViewLayoutAttributes(forCellWith: indexPath)
                 attribute.frame = CGRect(x: originX, y: originY, width: width, height: height)
                 cachedSectionAttributes.append(attribute)
                 
-                verticalValue += height + item.itemBuilder.itemInset.bottom
+                verticalValue += height + itemBuilder.itemInset.bottom
             }
             
             cachedAttributes.append(cachedSectionAttributes)

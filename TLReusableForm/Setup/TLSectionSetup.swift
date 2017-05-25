@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct TLSectionSetup {
+public struct TLFormSectionSetup {
     
     public init(sectionsInset: [UIEdgeInsets]) {
         self.sectionsInset = sectionsInset
@@ -20,15 +20,15 @@ public struct TLSectionSetup {
     
     var sectionsInset: [UIEdgeInsets]
     
-    func getInsets(for itemList: [[TLFormReusableItem]]) -> [UIEdgeInsets] {
+    func getInsets(for itemBuilders: [[TLFormItemBuilder]]) -> [UIEdgeInsets] {
         
-        if itemList.count == sectionsInset.count {
+        if itemBuilders.count == sectionsInset.count {
             return sectionsInset
         } else {
             
             var sections = [UIEdgeInsets]()
             
-            for _ in itemList {
+            for _ in itemBuilders {
                 sections.append(.zero)
             }
             return sections

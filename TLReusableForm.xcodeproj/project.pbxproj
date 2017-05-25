@@ -24,7 +24,7 @@
 		F12EB6AA1ED32FA4005FF15B /* TLFormItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12EB6A91ED32FA4005FF15B /* TLFormItem.swift */; };
 		F12EB6E11ED34E0B005FF15B /* TLTextFieldItemCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12EB6E01ED34E0B005FF15B /* TLTextFieldItemCellModel.swift */; };
 		F12EB6E31ED365CB005FF15B /* TLTextFieldItemSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12EB6E21ED365CB005FF15B /* TLTextFieldItemSetup.swift */; };
-		F12EB6E71ED36D03005FF15B /* TLTextFieldItemCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12EB6E61ED36D03005FF15B /* TLTextFieldItemCellDelegate.swift */; };
+		F1F7D36C1ED4768B00D89BB1 /* TLFormManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F7D36B1ED4768B00D89BB1 /* TLFormManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,7 +47,7 @@
 		F12EB6A91ED32FA4005FF15B /* TLFormItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLFormItem.swift; sourceTree = "<group>"; };
 		F12EB6E01ED34E0B005FF15B /* TLTextFieldItemCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLTextFieldItemCellModel.swift; sourceTree = "<group>"; };
 		F12EB6E21ED365CB005FF15B /* TLTextFieldItemSetup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLTextFieldItemSetup.swift; sourceTree = "<group>"; };
-		F12EB6E61ED36D03005FF15B /* TLTextFieldItemCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLTextFieldItemCellDelegate.swift; sourceTree = "<group>"; };
+		F1F7D36B1ED4768B00D89BB1 /* TLFormManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLFormManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +107,7 @@
 				F12EB6841ED32494005FF15B /* Layout */,
 				F12EB6861ED32494005FF15B /* TLFormDataSource.swift */,
 				F12EB6871ED32494005FF15B /* TLFormViewController.swift */,
+				F1F7D36B1ED4768B00D89BB1 /* TLFormManager.swift */,
 			);
 			path = Form;
 			sourceTree = "<group>";
@@ -146,7 +147,6 @@
 				F12EB69E1ED32C6A005FF15B /* TLTextFieldItemBuilder.swift */,
 				F12EB69F1ED32C6A005FF15B /* TLTextFieldItemCell.swift */,
 				F12EB6E01ED34E0B005FF15B /* TLTextFieldItemCellModel.swift */,
-				F12EB6E61ED36D03005FF15B /* TLTextFieldItemCellDelegate.swift */,
 			);
 			path = TextFieldItem;
 			sourceTree = "<group>";
@@ -235,8 +235,8 @@
 				F12EB6A11ED32C6A005FF15B /* TLTextFieldItemCell.swift in Sources */,
 				F12EB6901ED32627005FF15B /* TLFontHelper.swift in Sources */,
 				F12EB6E11ED34E0B005FF15B /* TLTextFieldItemCellModel.swift in Sources */,
-				F12EB6E71ED36D03005FF15B /* TLTextFieldItemCellDelegate.swift in Sources */,
 				F12EB68A1ED32494005FF15B /* TLFormViewController.swift in Sources */,
+				F1F7D36C1ED4768B00D89BB1 /* TLFormManager.swift in Sources */,
 				F12EB6A01ED32C6A005FF15B /* TLTextFieldItemBuilder.swift in Sources */,
 				F12EB6AA1ED32FA4005FF15B /* TLFormItem.swift in Sources */,
 				F12EB6911ED32627005FF15B /* TLSectionSetup.swift in Sources */,

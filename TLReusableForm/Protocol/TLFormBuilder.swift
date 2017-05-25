@@ -11,5 +11,5 @@ import Foundation
 public protocol TLFormBuilder {
     
     var itemList: [[TLFormItem]] { get set }
-    var formSetup: TLSectionSetup? { get }
+    var formSetup: TLFormSectionSetup? { get }
 }

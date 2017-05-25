@@ -14,11 +14,17 @@ public class TLTextFieldItemCellModel {
         self.inputText = inputText
     }
     
-    public var inputText: String? {
-        didSet {
-            didChangeText?(inputText)
-        }
-    }
+    public var inputText: String?
 
-    var didChangeText: ((String?) -> ())?
+    static func createNew<Model>(item: TLFormReusableItem, model: Model) -> TLFormReusableItem? {
+        
+        guard let model = model as? TLTextFieldItemCellModel else { return nil }
+        
+        switch item {
+        case .textfield(let setup, _ ):
+            return TLFormReusableItem.textfield(setup, model)
+        default: return nil
+        }
+        
+    }
 }

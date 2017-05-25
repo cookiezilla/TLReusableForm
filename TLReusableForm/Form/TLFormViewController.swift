@@ -14,15 +14,14 @@ public class TLFormViewController: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .white
+        collectionView.keyboardDismissMode = .onDrag
         return collectionView
     }()
     
     fileprivate var collectionLayout: TLFormCollectionViewLayout
     fileprivate var dataSource: TLFormDataSource
     
-    fileprivate var formBuilder: TLFormBuilder
-    fileprivate var reusableItems: [[TLFormReusableItem]]
-    fileprivate var items: [[TLFormItem]]
+    fileprivate var itemBuilders: [[TLFormItemBuilder]]
     
     public weak var collectionViewDelegate: UICollectionViewDelegate? {
         didSet {
@@ -30,36 +29,26 @@ public class TLFormViewController: UIViewController {
         }
     }
     
-    public weak var customItemDataSource: TLFormCustomItemDataSource? {
-        didSet {
-            dataSource.customItemDataSource = customItemDataSource
-        }
-    }
-    
-    public init(formBuilder: TLFormBuilder) {
+    init(dataSource: TLFormDataSource, reusableItems: [[TLFormReusableItem]], sectionSetup: TLFormSectionSetup?) {
         
-        self.formBuilder = formBuilder
-        self.items = formBuilder.itemList
+        self.dataSource = dataSource
         
-        self.reusableItems = [[TLFormReusableItem]]()
-        
-        for item in items {
-            let reusableList = item.map { item -> TLFormReusableItem in
-                return item.item
-            }
-            reusableItems.append(reusableList)
+        let builders = reusableItems.map { sectionItems -> [TLFormItemBuilder] in
+            return sectionItems.map({ item -> TLFormItemBuilder in
+                return item.itemBuilder
+            })
         }
         
-        if let setup = formBuilder.formSetup {
-            collectionLayout = TLFormCollectionViewLayout(itemList: reusableItems, sectionConfiguration: setup)
+        self.itemBuilders = builders
+        
+        if let setup = sectionSetup {
+            collectionLayout = TLFormCollectionViewLayout(itemBuilders: itemBuilders, sectionSetup: setup)
         } else {
-            collectionLayout = TLFormCollectionViewLayout(itemList: reusableItems, sectionConfiguration: TLSectionSetup())
+            collectionLayout = TLFormCollectionViewLayout(itemBuilders: itemBuilders, sectionSetup: TLFormSectionSetup())
         }
-        
-        dataSource = TLFormDataSource(itemList: reusableItems)
         
         super.init(nibName: nil, bundle: nil)
-    
+        
         setupDefaultItems()
         registerCustomItems(itemList: reusableItems)
         collectionView.collectionViewLayout = collectionLayout
@@ -75,34 +64,34 @@ public class TLFormViewController: UIViewController {
         setupCollectionView()
     }
     
-    public func get(for indexPath: IndexPath) {
-        dataSource.printFor(indexPath: indexPath)
-    }
-    
-    public func reloadCell<T>(with cellModel: T, at indexPath: IndexPath) {
-        
-        let reusableItem = reusableItems[indexPath.section][indexPath.item]
-        
-        switch reusableItem {
-        case .testing: break
-        case .textfield(let setup, var model):
-            
-            guard cellModel is TLTextFieldItemCellModel else { return }
-            
-            print(model.inputText)
-            
-            model.inputText = "\(model.inputText ?? "1") LUL"
-            let newItem = TLFormReusableItem.textfield(setup, model)
-            reusableItems[indexPath.section][indexPath.item] = newItem
-            print(model.inputText)
-            dataSource.update(item: newItem, at: indexPath)
-            collectionView.reloadItems(at: [indexPath])
-        case .custom(_): break
-        }
-    }
-    
-    public func reloadCollection() {
+//    public func reloadCell<T>(with cellModel: T, at indexPath: IndexPath) {
+//        
+//        let reusableItem = reusableItems[indexPath.section][indexPath.item]
+//        
+//        switch reusableItem {
+//        case .testing: break
+//        case .textfield(let setup, var model):
+//            
+//            guard cellModel is TLTextFieldItemCellModel else { return }
+//            
+//            print(model.inputText)
+//            
+//            model.inputText = "\(model.inputText ?? "1") LUL"
+//            let newItem = TLFormReusableItem.textfield(setup, model)
+//            reusableItems[indexPath.section][indexPath.item] = newItem
+//            print(model.inputText)
+//            dataSource.update(item: newItem, at: indexPath)
+//            collectionView.reloadItems(at: [indexPath])
+//        case .custom(_): break
+//        }
+//    }
+//    
+    internal func reloadData() {
         collectionView.reloadData()
+    }
+    
+    internal func reloadItems(at indexPaths: [IndexPath]) {
+        collectionView.reloadItems(at: indexPaths)
     }
     
     private func getReusableItems(items: [[TLFormItem]]) -> [[TLFormReusableItem]] {
@@ -133,7 +122,7 @@ public class TLFormViewController: UIViewController {
         
         var registeredIdentifiers = [String]()
         
-        for sectionItem in itemList{
+        for sectionItem in itemList {
             
             for item in sectionItem {
                 
