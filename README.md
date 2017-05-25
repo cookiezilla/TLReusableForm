@@ -4,4 +4,4 @@ Framework created for creating data driven Collection Views, this way it will be
 
 Currently it only has one cell working, but it works with custom user cells. 
 
-# Currently in development.
+This continues in development.
